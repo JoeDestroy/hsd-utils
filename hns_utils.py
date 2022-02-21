@@ -74,6 +74,9 @@ def get_node_info():
     return ret.json()
 
 
+# Wallet functions
+
+# Gets a list of wallets associated with the HSD Node
 def get_wallets():
     
     ret = requests.get(wallet_request + "wallet/")
@@ -86,3 +89,20 @@ def create_wallet(id, password):
     header = [{"passphrase": str(password)}]
     
     req = requests.put(wallet_request + "wallet/" + id, data=json.dumps(header))
+    
+
+# Transaction functions
+
+# TODO: I have no idea if get_tx() actually works
+def get_tx(address):
+    
+    req = requests.get(node_request + "tx/address/" + address)
+    
+    return req.json()
+
+
+def get_tx_hash(hash):
+    
+    req = requests.get(node_request + "tx/" + hash)
+    
+    return req.json()

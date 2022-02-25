@@ -89,11 +89,15 @@ def create_wallet(id, password):
     header = [{"passphrase": str(password)}]
     
     req = requests.put(wallet_request + "wallet/" + id, data=json.dumps(header))
+   
+ 
+def reset_wallet_token(walletId):
     
+    requests.post(wallet_request + "wallet/" + id + "/retoken")
 
 # Transaction functions
+# To use this, enable --index-tx=true when running HSD
 
-# TODO: I have no idea if get_tx() actually works
 def get_tx(address):
     
     req = requests.get(node_request + "tx/address/" + address)

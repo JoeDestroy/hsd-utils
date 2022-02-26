@@ -94,6 +94,14 @@ def create_wallet(id, password):
 def reset_wallet_token(walletId):
     
     requests.post(wallet_request + "wallet/" + id + "/retoken")
+    
+    
+def get_wallet_info(walletId):
+    
+    req = requests.get(wallet_request + "wallet/" + walletId)
+    
+    return req.json()
+
 
 # Transaction functions
 # To use this, enable --index-tx=true when running HSD
